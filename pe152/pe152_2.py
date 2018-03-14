@@ -3,7 +3,7 @@ from decimal import *
 
 start = time.clock( )
 
-getcontext().prec = 128
+getcontext().prec = 16
 
 def is_prime(n):
     if n == 2 or n == 3: return True
@@ -55,7 +55,7 @@ for i in range(2, 81):
         primes.append(i)
 # print(primes)
 
-primes_in = [2, 3, 5, 7, 37]
+primes_in = [2, 3, 5, 7, 13]
 primes_out = []
 for prime in primes:
     if not prime in primes_in:
@@ -83,7 +83,7 @@ for i in range(2, N+1):
 #         40, 41, 42, 44, 46, 47, 48, 49, 51, 56, 
 #         58, 63, 68, 70, 72, 77]
 
-# print(set1)
+print(set1)
 set_length = len(set1)
 print(set_length)
 
