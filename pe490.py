@@ -25,29 +25,27 @@ def f(n):
     step(n, pos, visited, 0)
     print(n, global_cnt)
 
-for i in range(1, 15):
-    f(i)
+coeff = [2, -1, 2, 1, 1, 0, -1, -1]
+s = [0, 1, 1, 1, 2, 6, 14, 28, 56]
+# , 1140, 2401, 5074, 10738, 22711, 48001
 
-for i in range(15,1,-1):
-    for j in range(2, i):
-        cnt = 0
-        for s in sol[j]:
-            for s1 in sol[i]: #type: list
-                if s1[:j-1] == s:
-                    cnt += 1
-        print(i, j, cnt)
+N = 10 ** 9
+def f1(n):
+    f1n = 0
+    k = 1
+    n = len(s)
+    for c in coeff:
+        f1n = (f1n + (s[n - k] * c) % N ) % N
+        k = k + 1
+    return f1n
 
-# s = [0, 0, 1, 1, 2, 6, 14, 28, 56, 118, 254, 541, 1140, 2401, 5074, 10738, 22711, 48001]
+f3 = 0
+for ss in s:
+    f3 = f3 + ss ** 3
+for i in range(9, 10 ** 14):
+    f1n = f1(i)
+    s.append(f1n)
+    s = s[1:]
+    f3 = ( f3 + ( f1n ** 3 ) % N ) % N
 
-# ss = [0] * 18
-# ss[1] = 1
-# ss[2] = 1
-# ss[3] = 1
-# for i in range(4, 18):
-#     for j in range(1, i):
-#         ss[i] += s[i - j]*s[j]
-
-# print(ss)
-
-# for i in range(4, 18):
-#     print(i, s[i] - ss[i])
+print(f3)
